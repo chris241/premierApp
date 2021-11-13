@@ -3,7 +3,7 @@ import { Header } from './Header';
 import { CreateUser } from './CreateUser';
 import { DisplayBoard } from './DisplayBoard';
 import { Users } from './Users';
-import {createUser} from '../services/userService'
+import {createUser, getAllUsers} from '../services/userService'
 
 export class Home extends Component {
   static displayName = Home.name;
@@ -32,6 +32,14 @@ export class Home extends Component {
     }
     this.setState({user})
   }
+  getAllUsers = () => {
+    getAllUsers()
+      .then(users => {
+        console.log(users)
+        this.setState({users: users, numberOfUsers: users.length})
+      });
+  }
+
   render () {
     return (
       <div>
