@@ -1,6 +1,9 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -8,7 +11,6 @@ using Microsoft.Extensions.Logging;
 namespace premierApp.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
     public class UsersController : ControllerBase
     {
 
@@ -36,5 +38,6 @@ namespace premierApp.Controllers
             return repository.Add(item);
         }
         
+
     }
 }
