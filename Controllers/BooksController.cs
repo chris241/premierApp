@@ -1,5 +1,5 @@
 using premierApp.Models;
-using premierApp.Services;
+using premierApp.services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -17,6 +17,7 @@ namespace premierApp.Controllers
         }
 
         [HttpGet]
+        [Route("api/books")]
         public ActionResult<List<Book>> Get() =>
             _bookService.Get();
 
@@ -34,6 +35,7 @@ namespace premierApp.Controllers
         }
 
         [HttpPost]
+        [Route("api/books")]
         public ActionResult<Book> Create(Book book)
         {
             _bookService.Create(book);
