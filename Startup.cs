@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
+using premierApp.Models;
+using premierApp.services;
 
 namespace premierApp
 {
@@ -21,6 +23,13 @@ namespace premierApp
         public void ConfigureServices(IServiceCollection services)
         {
 
+services.Configure<BookstoreDatabaseSettings>(
+        Configuration.GetSection(nameof(BookstoreDatabaseSettings)));
+
+    services.AddSingleton<IBookstoreDatabaseSettings>(sp =>
+        sp.GetRequiredService<IOptions<BookstoreDatabaseSettings>>().Value);
+services.AddSingleton<BookService>();
+    services.AddControllers();
             services.AddControllersWithViews();
 
             // In production, the React files will be served from this directory

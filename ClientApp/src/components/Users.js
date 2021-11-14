@@ -1,6 +1,6 @@
 import React from 'react'
+export const Users = ({users, deleteUser}) => {
 
-export const Users = ({users}) => {
 
     console.log('users length:::', users.length)
     if (users.length === 0) return null
@@ -13,6 +13,7 @@ export const Users = ({users}) => {
                   <td>{user.firstName}</td>
                   <td>{user.lastName}</td>
                   <td>{user.email}</td>
+                  <td><button  onClick={() => deleteUser(user.id)}>Supprimer</button></td>
               </tr>
           )
     }
@@ -29,6 +30,7 @@ export const Users = ({users}) => {
                     <th>Firstname</th>
                     <th>Lastname</th>
                     <th>Email</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>

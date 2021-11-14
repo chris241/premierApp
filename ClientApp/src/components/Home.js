@@ -3,7 +3,7 @@ import { Header } from './Header';
 import { CreateUser } from './CreateUser';
 import { DisplayBoard } from './DisplayBoard';
 import { Users } from './Users';
-import {createUser, getAllUsers} from '../services/userService'
+import {createUser, getAllUsers, deleteUser} from '../services/userService'
 
 export class Home extends Component {
   static displayName = Home.name;
@@ -39,6 +39,10 @@ export class Home extends Component {
         this.setState({users: users, numberOfUsers: users.length})
       });
   }
+    
+  deleteUser = (id) => {
+    deleteUser(id)
+  } 
 
   render () {
     return (
@@ -63,7 +67,7 @@ export class Home extends Component {
             </div>
       </div>
       <div className="row mrgnbtm">
-          <Users users={this.state.users}></Users>
+          <Users users={this.state.users} deleteUser={this.deleteUser}></Users>
         </div>
       </div>
     );

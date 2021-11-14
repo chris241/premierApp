@@ -30,5 +30,10 @@ namespace premierApp.Models
             users.Add(item);
             return item;
         }
+        public bool DeleteUser(int item)
+        {
+
+            return true;
+        }
     }
 }
